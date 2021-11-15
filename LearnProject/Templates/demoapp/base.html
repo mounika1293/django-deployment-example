@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  </head>
+  <body>
+      <div class="jumbotran">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a class="nav-link col-2" href="{% url 'demoapp:index' %}">Home <span class="sr-only">(current)</span></a><li>
+              <li class="nav-item"><a class="nav-link col-2" href="{% url 'admin:index' %}">Admin</a></li>
+              <li class="nav-item"><a class="nav-link col-2" href="{% url 'demoapp:register' %}">Register</a></li>
+              <li class="nav-item"><a class="nav-link col-2 disabled" href="#">Help</a></li>
+              {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link col-2" href="{% url 'logout' %}">Logout</a></li>
+              {% else %}
+                <li class="nav-item"><a class="nav-link col-2" href="{% url 'demoapp:login' %}">Login</a></li> 
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="container">
+        {% block body_block %}
+
+        {% endblock %}
+      </div>
+  </body>
+</html>
